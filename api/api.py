@@ -7,6 +7,9 @@ app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx', 'txt'}
 STORAGE_DIR = './storage/'
 
+# Create storage directory if it does not exist
+os.makedirs(STORAGE_DIR, exist_ok=True)
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
